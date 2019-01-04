@@ -1,0 +1,196 @@
+---
+title: "Why R?"
+author: "by Tugba Ozturk"
+# <br /> is an HTML line break
+#date: "2018/12/07"# (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: ["default", rladies, rladies-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      
+
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+
+<!-- slide 1--> 
+.center[
+```{r  out.width = "50%", echo=FALSE}
+if (knitr:::is_latex_output()) {
+  knitr::asis_output('\\url{....}')
+} else {
+  knitr::include_graphics("images/ionchannel2.gif") 
+}
+```
+]
+
+---
+<!-- slide 2 --> 
+# I am ...
+
+- a statistical biophysicist.
+
+- a workshop facilitator working for CTL and GradProSkills.
+
+- an R enthusiast!
+
+---
+<!-- slide 3 --> 
+
+# What is R?
+
+```{r out.width = "25%", echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("images/r.png")
+```
+
+--
+
+
+```{r, echo=FALSE, eval=TRUE}
+knitr::include_graphics("images/proglang.png")
+```
+
+
+---
+<!-- slide 4 --> 
+
+# What is R?
+
+- robust and open source
+
+- high level, easy-to-learn, simple syntax
+
+- extendible (a lot of R packages)
+
+- a vibrant community `r emo::ji("heart")`
+
+- data analysis, data visualization, statistical analysis, machine learning, ...
+
+
+---
+<!-- slide 5 --> 
+
+# Why *learn* R?
+
+--
+
+For data analysis:
+
+
+
+
+---
+<!-- slide 6 --> 
+
+# Why *learn* R?
+
+For data visualization:
+
+
+---
+<!-- slide 7 --> 
+
+# Why *learn* R?
+
+For making impressionist artwork:
+
+.pull-left[
+![](images/romanin1.jpg)]
+
+--
+
+.pull-right[
+![](images/romanin2.jpg)]
+
+.pull-left[.footnote[Image credit: [Romanin Francois's blog](http://romainfrancois.blog.free.fr/index.php?post/2010/11/12/What-would-impressionnists-do-with-R).]]
+
+
+---
+<!-- slide 8 --> 
+
+# Why *learn* R?
+
+For making dashboards, web applications:
+
+```{r out.width = "70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/sihnydashboards.png")
+```
+.footnote[The image is taken from [here](https://appsilon.com/semantic-dashboard-new-open-source-r-shiny-package/).] 
+
+
+---
+<!-- slide 9 --> 
+
+# Why *learn* R?
+
+For increasing your academic visibility:
+
+```{r, echo=FALSE, eval=TRUE}
+knitr::include_graphics("images/website.png")
+```
+
+---
+<!-- slide 10 --> 
+
+# Why *learn* R?
+
+For text mining, geocomputation, statistical analysis, machine learning:
+
+```{r, echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("images/bookdownlogo.png")
+```
+
+`bookdown.org` has a lot of online books!
+
+
+---
+<!-- slide 12 --> 
+
+# How to *learn* R?
+
+--
+
+- Local resources: 
+    - GradProSkills R workshops (GPDI 515 and GPDI 517)
+    - RLadies Montreal meet-ups! 
+    
+--
+
+- Online resources:
+    - Online courses (Coursera, EdX, DataCamp, Udemy, ...)
+    - Tutorials (Youtube, RStudio, GitHub, ...)
+    - Twitter (@hadleywickham, @jennybryan, @juliasilge, @dataandme, @RLadiesMTL, ...)
+    - Blogs (r-tutor.com, r-bloggers.com, ...)
+
+
+---
+<!--slide 13-->
+
+# R for Psychology
+
+- [Learning Statistics with R](https://learningstatisticswithr.com/)
+
+- Course notes for [Psychology Statistics](http://swirlstats.com/scn/Psychology_Statistics.html)
+
+- [R-bloggers'](https://www.r-bloggers.com/learning-r-for-researchers-in-psychology/) suggestions for researchers in psychology (including lecture notes, mailing lists, online books and workshops)
+
+- Popular websites:
+    - `https://rpsychologist.com`
+    - `https://personality-project.org/r`
+
+---
+
+
+
+class: inverse, center, middle
+
+## Thank you!
+
+## `r icon::fa("github")` tugbateaches/whyR 
