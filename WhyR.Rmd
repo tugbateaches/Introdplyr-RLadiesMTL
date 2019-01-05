@@ -19,20 +19,7 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
-
-<!-- slide 1--> 
-.center[
-```{r  out.width = "50%", echo=FALSE}
-if (knitr:::is_latex_output()) {
-  knitr::asis_output('\\url{....}')
-} else {
-  knitr::include_graphics("images/ionchannel2.gif") 
-}
-```
-]
-
----
-<!-- slide 2 --> 
+<!-- slide 1 --> 
 # I am ...
 
 - a statistical biophysicist.
@@ -41,8 +28,9 @@ if (knitr:::is_latex_output()) {
 
 - an R enthusiast!
 
+
 ---
-<!-- slide 3 --> 
+<!-- slide 2 --> 
 
 # What is R?
 
@@ -59,7 +47,7 @@ knitr::include_graphics("images/proglang.png")
 
 
 ---
-<!-- slide 4 --> 
+<!-- slide 3 --> 
 
 # What is R?
 
@@ -75,9 +63,9 @@ knitr::include_graphics("images/proglang.png")
 
 
 ---
-<!-- slide 5 --> 
+<!-- slide 4 --> 
 
-# Why *learn* R?
+# Why learn R?
 
 --
 
@@ -106,9 +94,9 @@ df %>% filter(origin == "JFK", (dest == "FLL" | dest == "ORD"), month == 12) %>%
 
 
 ---
-<!-- slide 6 --> 
+<!-- slide 5 --> 
 
-# Why *learn* R?
+# Why learn R?
 
 For data visualization:
 
@@ -135,18 +123,36 @@ background-image: url(images/gganimate.png)
 background-size: 300px
 background-position: 90% 10%
 
-# Why *learn* R?
+<!-- slide 6 --> 
+# Why learn R?
 
 
 For data visualization:
 
 .center[
-```{r  out.width = "60%", echo=FALSE}
-if (knitr:::is_latex_output()) {
-  knitr::asis_output('\\url{....}')
-} else {
-  knitr::include_graphics("hey.gif") 
-}
+
+```{r  out.width = "60%", echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(gganimate)
+library(gapminder)
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  # Here comes the gganimate specific bits
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'Life Expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+
+
+#if (knitr:::is_latex_output()) {
+#  knitr::asis_output('\\url{....}')
+#} else {
+#  knitr::include_graphics("ggnaimateexample.gif") 
+#}
 ```
 ]
 
@@ -154,7 +160,7 @@ if (knitr:::is_latex_output()) {
 ---
 <!-- slide 7 --> 
 
-# Why *learn* R?
+# Why learn R?
 
 For making impressionist artwork:
 
@@ -172,7 +178,7 @@ For making impressionist artwork:
 ---
 <!-- slide 8 --> 
 
-# Why *learn* R?
+# Why learn R?
 
 For making dashboards, web applications:
 
@@ -185,7 +191,7 @@ knitr::include_graphics("images/sihnydashboards.png")
 ---
 <!-- slide 9 --> 
 
-# Why *learn* R?
+# Why learn R?
 
 For increasing your academic visibility:
 
@@ -196,7 +202,7 @@ knitr::include_graphics("images/website.png")
 ---
 <!-- slide 10 --> 
 
-# Why *learn* R?
+# Why learn R?
 
 For text mining, geocomputation, statistical analysis, machine learning:
 
@@ -210,7 +216,7 @@ knitr::include_graphics("images/bookdownlogo.png")
 ---
 <!-- slide 12 --> 
 
-# How to *learn* R?
+# How to learn R?
 
 --
 
