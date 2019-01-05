@@ -22,6 +22,8 @@ options(htmltools.dir.version = FALSE)
 <!-- slide 1 --> 
 # I am ...
 
+--
+
 - a statistical biophysicist.
 
 - a workshop facilitator working for CTL and GradProSkills.
