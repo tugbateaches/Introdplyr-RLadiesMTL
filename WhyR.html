@@ -47,7 +47,7 @@ class: center, middle, inverse, title-slide
 --
 
 
-![](images/proglang.png)&lt;!-- --&gt;
+&lt;img src="images/proglang.png" width="983" /&gt;
 
 
 ---
@@ -78,12 +78,65 @@ For data analysis:
 
 
 
+
+
+```
+## # A tibble: 6 x 8
+##    year month   day dep_time arr_time origin dest  air_time
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;
+## 1  2013     1     1      517      830 EWR    IAH        227
+## 2  2013     1     1      533      850 LGA    IAH        227
+## 3  2013     1     1      542      923 JFK    MIA        160
+## 4  2013     1     1      544     1004 JFK    BQN        183
+## 5  2013     1     1      554      812 LGA    ATL        116
+## 6  2013     1     1      554      740 EWR    ORD        150
+```
+
+
+--
+
+
+```r
+df %&gt;% filter(origin == "JFK", (dest == "FLL" | dest == "ORD"), month == 12) %&gt;%
+    group_by(dest) %&gt;% summarize(mean=mean(air_time, na.rm=TRUE))
+```
+
+```
+## # A tibble: 2 x 2
+##   dest   mean
+##   &lt;chr&gt; &lt;dbl&gt;
+## 1 FLL    158.
+## 2 ORD    131.
+```
+
+
 ---
 &lt;!-- slide 6 --&gt; 
 
 # Why *learn* R?
 
 For data visualization:
+
+--
+
+.center[
+![](WhyR_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+]
+
+
+---
+background-image: url(images/gganimate.png)
+background-size: 300px
+background-position: 90% 10%
+
+# Why *learn* R?
+
+
+For data visualization:
+
+.center[
+&lt;img src="hey.gif" width="60%" /&gt;
+]
 
 
 ---
@@ -122,7 +175,7 @@ For making dashboards, web applications:
 
 For increasing your academic visibility:
 
-![](images/website.png)&lt;!-- --&gt;
+&lt;img src="images/website.png" width="1873" /&gt;
 
 ---
 &lt;!-- slide 10 --&gt; 
@@ -131,7 +184,7 @@ For increasing your academic visibility:
 
 For text mining, geocomputation, statistical analysis, machine learning:
 
-&lt;img src="images/bookdownlogo.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="images/bookdownlogo.png" width="267" style="display: block; margin: auto;" /&gt;
 
 `bookdown.org` has a lot of online books!
 
@@ -144,12 +197,14 @@ For text mining, geocomputation, statistical analysis, machine learning:
 --
 
 - Local resources: 
+
     - GradProSkills R workshops (GPDI 515 and GPDI 517)
     - RLadies Montreal meet-ups! 
     
 --
 
 - Online resources:
+
     - Online courses (Coursera, EdX, DataCamp, Udemy, ...)
     - Tutorials (Youtube, RStudio, GitHub, ...)
     - Twitter (@hadleywickham, @jennybryan, @juliasilge, @dataandme, @RLadiesMTL, ...)

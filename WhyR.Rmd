@@ -84,6 +84,25 @@ knitr::include_graphics("images/proglang.png")
 For data analysis:
 
 
+```{r echo = FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(nycflights13)
+df <- flights %>% select(year:dep_time,arr_time,origin:air_time)
+```
+
+
+```{r echo = FALSE}
+head(df)
+```
+
+
+--
+
+```{r}
+df %>% filter(origin == "JFK", (dest == "FLL" | dest == "ORD"), month == 12) %>%
+    group_by(dest) %>% summarize(mean=mean(air_time, na.rm=TRUE))
+```
 
 
 ---
@@ -92,6 +111,44 @@ For data analysis:
 # Why *learn* R?
 
 For data visualization:
+
+--
+
+.center[
+```{r, echo=FALSE, fig.height=5,message=FALSE,warning=FALSE}
+a <- df %>% filter(origin == "JFK", (dest == "FLL" | dest == "ORD"), month == 12) %>% group_by(dest) 
+ggplot(data=a, aes(a$air_time)) + 
+  geom_density( col="black", 
+                 fill="green", 
+                 alpha = .1) + labs(x="Time in the air (in minutes)", y="Count") + theme_bw() +
+  theme(axis.line = element_line(colour = "black"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_blank(),
+    panel.background = element_blank()) + facet_wrap(vars(a$dest)) +theme(strip.background = element_blank(), strip.placement = "outside")
+```
+]
+
+
+---
+background-image: url(images/gganimate.png)
+background-size: 300px
+background-position: 90% 10%
+
+# Why *learn* R?
+
+
+For data visualization:
+
+.center[
+```{r  out.width = "60%", echo=FALSE}
+if (knitr:::is_latex_output()) {
+  knitr::asis_output('\\url{....}')
+} else {
+  knitr::include_graphics("hey.gif") 
+}
+```
+]
 
 
 ---
@@ -158,12 +215,14 @@ knitr::include_graphics("images/bookdownlogo.png")
 --
 
 - Local resources: 
+
     - GradProSkills R workshops (GPDI 515 and GPDI 517)
     - RLadies Montreal meet-ups! 
     
 --
 
 - Online resources:
+
     - Online courses (Coursera, EdX, DataCamp, Udemy, ...)
     - Tutorials (Youtube, RStudio, GitHub, ...)
     - Twitter (@hadleywickham, @jennybryan, @juliasilge, @dataandme, @RLadiesMTL, ...)
