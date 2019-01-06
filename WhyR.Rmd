@@ -69,7 +69,16 @@ knitr::include_graphics("images/proglang.png")
 
 # Why learn R?
 
---
+```{r out.width = "70%", echo=FALSE, eval=TRUE, fig.align='center'}
+knitr::include_graphics("images/r2me.png")
+```
+
+
+
+---
+<!-- slide 4 --> 
+
+# Why learn R?
 
 For data analysis:
 
@@ -110,7 +119,7 @@ a <- df %>% filter(origin == "JFK", (dest == "FLL" | dest == "ORD"), month == 12
 ggplot(data=a, aes(a$air_time)) + 
   geom_density( col="black", 
                  fill="green", 
-                 alpha = .1) + labs(x="Time in the air (in minutes)", y="Count") + theme_bw() +
+                 alpha = .1) + labs(x="Time in the air (in minutes)", y="Count") + theme_bw(base_size=14) +
   theme(axis.line = element_line(colour = "black"),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -140,12 +149,12 @@ library(gapminder)
 
 ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
   geom_point(alpha = 0.7, show.legend = FALSE) +
-  scale_colour_manual(values = country_colors) +
+  scale_colour_manual(values = country_colors) + theme_bw(base_size=14) +
   scale_size(range = c(2, 12)) +
   scale_x_log10() +
   facet_wrap(~continent) +
   # Here comes the gganimate specific bits
-  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'Life Expectancy') +
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'Life expectancy') +
   transition_time(year) +
   ease_aes('linear')
 
@@ -226,6 +235,9 @@ knitr::include_graphics("images/bookdownlogo.png")
 
     - GradProSkills R workshops (GPDI 515 and GPDI 517)
     - RLadies Montreal meet-ups! 
+    ```{r, echo=FALSE, eval=TRUE, fig.align='center', dpi=1000}
+       knitr::include_graphics("images/rladies.jpg")
+    ```
     
 --
 
