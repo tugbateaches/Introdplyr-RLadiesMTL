@@ -112,7 +112,7 @@ head(arrange(Orange, circumference))
 
 
 ```r
-*head(arrange(Orange, desc(circumference)))
+head(arrange(Orange, desc(circumference)))
 ```
 
 ```
@@ -144,27 +144,27 @@ Orange &lt;- arrange(Orange, circumference)
 # Pipe Operator (%&gt;%)
 &lt;!-- slide 7 --&gt; 
 `dplyr` imports this operator from `magrittr`. 
-**` %&gt;% ` ** pipes the output of one function to the input of another function. 
+**` %&gt;% ` ** pipes the output of one function to the input of another function. Great for improving readability of your code!
 --
 
 
 ```r
-Orange %&gt;% arrange(circumference) %&gt;% head(4)
+Orange &lt;- arrange(Orange, circumference)
 ```
 
+--
+
+
+```r
+Orange %&gt;% arrange(circumference) 
 ```
-##   Tree age circumference
-## 1    1 118            30
-## 2    3 118            30
-## 3    5 118            30
-## 4    4 118            32
-```
+
 --
 
 In the **descending** order:
 
 ```r
-Orange %&gt;% arrange(desc(circumference)) %&gt;% head(4)
+Orange %&gt;% arrange(desc(circumference)) %&gt;% head()
 ```
 
 ```
@@ -173,6 +173,8 @@ Orange %&gt;% arrange(desc(circumference)) %&gt;% head(4)
 ## 2    4 1372           209
 ## 3    2 1372           203
 ## 4    2 1582           203
+## 5    4 1231           179
+## 6    5 1582           177
 ```
 
 
@@ -233,6 +235,8 @@ To select a column and save it as a **vector**:
 
 ```r
 ages &lt;- as.vector(Orange %&gt;% select(age))
+ages &lt;- Orange %&gt;% .$age
+ages &lt;- Orange %&gt;% pull(age)
 ```
 
 --
@@ -252,7 +256,7 @@ Orange %&gt;% select(circumference,age,Tree) %&gt;% head()
 ## 5           120 1231    1
 ## 6           142 1372    1
 ```
-.footnote[Add a minus before the column name to remove it!]
+.footnote[Add a minus sign before any column name to remove it!]
 ---
 
 # mutate()
@@ -274,7 +278,7 @@ Orange %&gt;% mutate(radius=round(circumference/(2*pi),1)) %&gt;% head()
 ## 6    1 1372           142   22.6
 ```
 --
-Use `transmute()` to get rid of the old variables:
+Use `transmute()` to get rid of the other columns:
 --
 
 ```r
@@ -335,7 +339,7 @@ Orange %&gt;% filter(circumference &lt; 100 &amp; age &gt; 500 ) %&gt;% head(3)
 ## 3    5 664            81
 ```
 --
-If you are interested in the `Tree` column:
+You can also select only one of the columns:
 
 
 ```r
@@ -397,10 +401,11 @@ background-position: 90% 7%
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-- Create a new column which is the ratio of area to circumference and name it as growth
-- Find out the age corresponds to the minimum of value in the growth column for the third tree.  
+- Create a new column which is the ratio of area to circumference and name it as `growth`.
+- Find out the age corresponds to the minimum of value in the `growth` column for the third tree.  
 
 --
+
 
 ```r
 answer &lt;- Orange %&gt;% mutate(growth=circumference/age) %&gt;% 
@@ -472,7 +477,7 @@ Orange %&gt;% group_by(Tree) %&gt;% summarize(count=n(),
     
 --
 
-- `n()` calculates the number of observations (rows) in the group.
+- `n()` calculates the number of rows in the group.
 --
 
 - Other aggregate functions which can be used: `max()`, `mean()`, `median()`, `min()`, `sd()`, `sum()` and the interquartile range (`IQR()`).
@@ -531,7 +536,7 @@ Orange %&gt;% group_by(Tree) %&gt;% summarize(count=n(),
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Tree &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -573,13 +578,13 @@ full_join(Orange,df) %&gt;% head(3)
 ```
 
 ```
-##   Tree age circumference Country
+##   Tree age circumference country
 ## 1    1 118            30      US
 ## 2    1 484            58      US
 ## 3    1 664            87      US
 ```
 --
-Check [the documentation](https://dplyr.tidyverse.org/articles/two-table.html) for two table verbs.
+Click [here](https://dplyr.tidyverse.org/articles/two-table.html) to learn more about the two table verbs.
 ---
 
 
@@ -589,9 +594,9 @@ Check [the documentation](https://dplyr.tidyverse.org/articles/two-table.html) f
 
 - The official `dplyr` [documentation](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
 
-- Jenny Bryan's [STAT 545 course page](http://stat545.com/block009_dplyr-intro.html)
+- [Data wrangling, exploration, and analysis with R](http://stat545.com/block009_dplyr-intro.html) lecture notes by Jenny Bryan
 
-- Another [course page](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)]
+- [Biomedical Data Science](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)] lecture notes by Rafael Irizarry and Michael Love
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

@@ -74,8 +74,8 @@ head(arrange(Orange, circumference))
 ```
 --
 
-```{r, tidy=TRUE, echo=TRUE, eval=TRUE}
-{{head(arrange(Orange, desc(circumference)))}}
+```{r, echo=TRUE, eval=TRUE}
+head(arrange(Orange, desc(circumference)))
 ```
 ---
 
@@ -96,17 +96,24 @@ Orange <- arrange(Orange, circumference)
 # Pipe Operator (%>%)
 <!-- slide 7 --> 
 `dplyr` imports this operator from `magrittr`. 
-**` %>% ` ** pipes the output of one function to the input of another function. 
+**` %>% ` ** pipes the output of one function to the input of another function. Great for improving readability of your code!
 --
 
-```{r, echo=TRUE, eval=TRUE}
-Orange %>% arrange(circumference) %>% head(4)
+```{r, echo=TRUE, eval=FALSE}
+Orange <- arrange(Orange, circumference)
 ```
+
+--
+
+```{r, echo=TRUE, eval=FALSE}
+Orange %>% arrange(circumference) 
+```
+
 --
 
 In the **descending** order:
 ```{r, echo=TRUE, eval=TRUE}
-Orange %>% arrange(desc(circumference)) %>% head(4)
+Orange %>% arrange(desc(circumference)) %>% head()
 ```
 
 
@@ -150,7 +157,7 @@ To  reorder the columns:
 ```{r, echo=TRUE, eval=TRUE}
 Orange %>% select(circumference,age,Tree) %>% head()
 ```
-.footnote[Add a minus before the column name to remove it!]
+.footnote[Add a minus sign before any column name to remove it!]
 ---
 
 # mutate()
@@ -161,7 +168,7 @@ To create new columns:
 Orange %>% mutate(radius=round(circumference/(2*pi),1)) %>% head()
 ```
 --
-Use `transmute()` to get rid of the old variables:
+Use `transmute()` to get rid of the other columns:
 --
 ```{r, echo=TRUE, eval=TRUE}
 Orange %>% transmute(radius=round(circumference/(2*pi),1)) %>% head()
@@ -186,7 +193,7 @@ To select rows with **multiple** conditions:
 Orange %>% filter(circumference < 100 & age > 500 ) %>% head(3)
 ```
 --
-If you are interested in the `Tree` column:
+You can also select only one of the columns:
 
 ```{r, echo=TRUE, eval=TRUE}
 Orange %>% filter(circumference < 100 & age > 500 ) %>% select(Tree) %>% head()
@@ -202,10 +209,11 @@ background-position: 90% 7%
 knitr::kable(head(Orange), format = 'html')
 ```
 
-- Create a new column which is the ratio of area to circumference and name it as growth
-- Find out the age corresponds to the minimum of value in the growth column for the third tree.  
+- Create a new column which is the ratio of area to circumference and name it as `growth`.
+- Find out the age corresponds to the minimum of value in the `growth` column for the third tree.  
 
 --
+
 ```{r, echo=TRUE, eval=TRUE}
 answer <- Orange %>% mutate(growth=circumference/age) %>% 
   filter(Tree==3) %>% filter(growth==min(growth))
@@ -244,7 +252,7 @@ Orange %>% group_by(Tree) %>% summarize(count=n(),
     
 --
 
-- `n()` calculates the number of observations (rows) in the group.
+- `n()` calculates the number of rows in the group.
 --
 
 - Other aggregate functions which can be used: `max()`, `mean()`, `median()`, `min()`, `sd()`, `sum()` and the interquartile range (`IQR()`).
@@ -255,7 +263,7 @@ Orange %>% group_by(Tree) %>% summarize(count=n(),
 # A lesser known function: `full_join()`
 
 ```{r, echo=FALSE}
-df <- data.frame(Tree=unique(Orange$Tree), Country=c("US", "CAN", "FRA", "CAN", "UK"))
+df <- data.frame(Tree=unique(Orange$Tree), country=c("US", "CAN", "FRA", "CAN", "UK"))
 knitr::kable(list(head(Orange,5),df), format = 'html')
 ```
 --
@@ -263,7 +271,7 @@ knitr::kable(list(head(Orange,5),df), format = 'html')
 full_join(Orange,df) %>% head(3)
 ```
 --
-Check [the documentation](https://dplyr.tidyverse.org/articles/two-table.html) for two table verbs.
+Click [here](https://dplyr.tidyverse.org/articles/two-table.html) to learn more about the two table verbs.
 ---
 
 
@@ -273,6 +281,6 @@ Check [the documentation](https://dplyr.tidyverse.org/articles/two-table.html) f
 
 - The official `dplyr` [documentation](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
 
-- Jenny Bryan's [STAT 545 course page](http://stat545.com/block009_dplyr-intro.html)
+- [Data wrangling, exploration, and analysis with R](http://stat545.com/block009_dplyr-intro.html) lecture notes by Jenny Bryan
 
-- Another [course page](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)]
+- [Biomedical Data Science](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)] lecture notes by Rafael Irizarry and Michael Love
