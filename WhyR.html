@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Why R?</title>
+    <meta charset="utf-8">
+    <meta name="author" content="by Tugba Ozturk" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Why R?
+### by Tugba Ozturk
+
+---
+
+
+
+
+&lt;!-- slide 1 --&gt; 
+# I am ...
+
+--
+
+- a statistical biophysicist.
+
+- a workshop facilitator working for CTL and GradProSkills.
+
+- an R enthusiast!
+
+
+---
+&lt;!-- slide 2 --&gt; 
+
+# What is R?
+
+&lt;img src="images/r.png" width="25%" style="display: block; margin: auto;" /&gt;
+
+--
+
+
+&lt;img src="images/proglang.png" width="983" /&gt;
+
+
+---
+&lt;!-- slide 3 --&gt; 
+
+# What is R?
+
+- robust and open source
+
+- high level, easy-to-learn, simple syntax
+
+- extendible (a lot of R packages)
+
+- a vibrant community ❤️
+
+- data analysis, data visualization, statistical analysis, machine learning, ...
+
+
+---
+&lt;!-- slide 4 --&gt; 
+
+# Why learn R?
+
+&lt;img src="images/r2me.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+&lt;!-- slide 4 --&gt; 
+
+# Why learn R?
+
+For data analysis:
+
+
+
+
+
+
+```
+## # A tibble: 6 x 8
+##    year month   day dep_time arr_time origin dest  air_time
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;
+## 1  2013     1     1      517      830 EWR    IAH        227
+## 2  2013     1     1      533      850 LGA    IAH        227
+## 3  2013     1     1      542      923 JFK    MIA        160
+## 4  2013     1     1      544     1004 JFK    BQN        183
+## 5  2013     1     1      554      812 LGA    ATL        116
+## 6  2013     1     1      554      740 EWR    ORD        150
+```
+
+
+--
+
+
+```r
+df %&gt;% filter(origin == "JFK", (dest == "FLL" | dest == "ORD"), month == 12) %&gt;%
+    group_by(dest) %&gt;% summarize(mean=mean(air_time, na.rm=TRUE))
+```
+
+```
+## # A tibble: 2 x 2
+##   dest   mean
+##   &lt;chr&gt; &lt;dbl&gt;
+## 1 FLL    158.
+## 2 ORD    131.
+```
+
+
+---
+&lt;!-- slide 5 --&gt; 
+
+# Why learn R?
+
+For data visualization:
+
+--
+
+.center[
+![](WhyR_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+]
+
+
+---
+background-image: url(images/gganimate.png)
+background-size: 300px
+background-position: 90% 10%
+
+&lt;!-- slide 6 --&gt; 
+# Why learn R?
+
+
+For data visualization:
+
+.center[
+
+&lt;img src="WhyR_files/figure-html/unnamed-chunk-8-1.gif" width="60%" /&gt;
+]
+
+
+---
+&lt;!-- slide 7 --&gt; 
+
+# Why learn R?
+
+For making impressionist artwork:
+
+.pull-left[
+![](images/romanin1.jpg)]
+
+--
+
+.pull-right[
+![](images/romanin2.jpg)]
+
+.pull-left[.footnote[Image credit: [Romanin Francois's blog](http://romainfrancois.blog.free.fr/index.php?post/2010/11/12/What-would-impressionnists-do-with-R).]]
+
+
+---
+&lt;!-- slide 8 --&gt; 
+
+# Why learn R?
+
+For making dashboards, web applications:
+
+&lt;img src="images/sihnydashboards.png" width="70%" style="display: block; margin: auto;" /&gt;
+.footnote[The image is taken from [here](https://appsilon.com/semantic-dashboard-new-open-source-r-shiny-package/).] 
+
+
+---
+&lt;!-- slide 9 --&gt; 
+
+# Why learn R?
+
+For increasing your academic visibility:
+
+&lt;img src="images/website.png" width="1873" /&gt;
+
+---
+&lt;!-- slide 10 --&gt; 
+
+# Why learn R?
+
+For text mining, geocomputation, statistical analysis, machine learning:
+
+&lt;img src="images/bookdownlogo.png" width="267" style="display: block; margin: auto;" /&gt;
+
+`bookdown.org` has a lot of online books!
+
+
+---
+&lt;!-- slide 12 --&gt; 
+
+# How to learn R?
+
+--
+
+- Local resources: 
+
+    - GradProSkills R workshops (GPDI 515 and GPDI 517)
+    - RLadies Montreal meet-ups! 
+    &lt;img src="images/rladies.jpg" style="display: block; margin: auto;" /&gt;
+    
+--
+
+- Online resources:
+
+    - Online courses (Coursera, EdX, DataCamp, Udemy, ...)
+    - Tutorials (Youtube, RStudio, GitHub, ...)
+    - Twitter (@hadleywickham, @jennybryan, @juliasilge, @dataandme, @RLadiesMTL, ...)
+    - Blogs (r-tutor.com, r-bloggers.com, ...)
+
+
+---
+&lt;!--slide 13--&gt;
+
+# R for Psychology
+
+- [Learning Statistics with R](https://learningstatisticswithr.com/)
+
+- Course notes for [Psychology Statistics](http://swirlstats.com/scn/Psychology_Statistics.html)
+
+- [R-bloggers'](https://www.r-bloggers.com/learning-r-for-researchers-in-psychology/) suggestions for researchers in psychology (including lecture notes, mailing lists, online books and workshops)
+
+- Popular websites:
+    - `https://rpsychologist.com`
+    - `https://personality-project.org/r`
+
+---
+
+
+
+class: inverse, center, middle
+
+## Thank you!
+
+## <i class="fab  fa-github "></i> tugbateaches/whyR
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
