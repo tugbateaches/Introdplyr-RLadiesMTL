@@ -156,7 +156,7 @@ Orange &lt;- arrange(Orange, circumference)
 
 
 ```r
-Orange %&gt;% arrange(circumference) 
+Orange &lt;- Orange %&gt;% arrange(circumference) 
 ```
 
 --
@@ -401,7 +401,7 @@ background-position: 90% 7%
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-- Create a new column which is the ratio of area to circumference and name it as `growth`.
+- Create a new column which is the ratio of circumference to age and name it as `growth`.
 - Find out the age corresponds to the minimum of value in the `growth` column for the third tree.  
 
 --
@@ -409,7 +409,7 @@ background-position: 90% 7%
 
 ```r
 answer &lt;- Orange %&gt;% mutate(growth=circumference/age) %&gt;% 
-  filter(Tree==3) %&gt;% filter(growth==min(growth))
+  filter(Tree==3, growth==min(growth))
 print(answer$age)
 ```
 
@@ -596,7 +596,9 @@ Click [here](https://dplyr.tidyverse.org/articles/two-table.html) to learn more 
 
 - [Data wrangling, exploration, and analysis with R](http://stat545.com/block009_dplyr-intro.html) lecture notes by Jenny Bryan
 
-- [Biomedical Data Science](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)] lecture notes by Rafael Irizarry and Michael Love
+
+- [Biomedical Data Science](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html) lecture notes by Rafael Irizarry and Michael Love
+]
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

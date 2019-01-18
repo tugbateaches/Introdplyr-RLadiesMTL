@@ -106,7 +106,7 @@ Orange <- arrange(Orange, circumference)
 --
 
 ```{r, echo=TRUE, eval=FALSE}
-Orange %>% arrange(circumference) 
+Orange <- Orange %>% arrange(circumference) 
 ```
 
 --
@@ -209,14 +209,14 @@ background-position: 90% 7%
 knitr::kable(head(Orange), format = 'html')
 ```
 
-- Create a new column which is the ratio of area to circumference and name it as `growth`.
+- Create a new column which is the ratio of circumference to age and name it as `growth`.
 - Find out the age corresponds to the minimum of value in the `growth` column for the third tree.  
 
 --
 
 ```{r, echo=TRUE, eval=TRUE}
 answer <- Orange %>% mutate(growth=circumference/age) %>% 
-  filter(Tree==3) %>% filter(growth==min(growth))
+  filter(Tree==3, growth==min(growth))
 print(answer$age)
 ```
 
@@ -283,4 +283,6 @@ Click [here](https://dplyr.tidyverse.org/articles/two-table.html) to learn more 
 
 - [Data wrangling, exploration, and analysis with R](http://stat545.com/block009_dplyr-intro.html) lecture notes by Jenny Bryan
 
-- [Biomedical Data Science](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)] lecture notes by Rafael Irizarry and Michael Love
+
+- [Biomedical Data Science](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html) lecture notes by Rafael Irizarry and Michael Love
+]
